@@ -8,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class TodoListComponent implements OnInit {
 
   constructor() { }
+  toDoItem = [];
+  newToDo = '';
+
+  // add current item to to do item
+  // generate list from to do item
 
   ngOnInit() {
+  }
+
+  addToList() {
+    this.toDoItem.concat(this.newToDo);
   }
 
 }
