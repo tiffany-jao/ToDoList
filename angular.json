@@ -140,5 +140,8 @@
       }
     }
   },
-  "defaultProject": "ToDoList"
+  "defaultProject": "ToDoList",
+  "cli": {
+    "analytics": "0999c965-3743-4061-a87f-9e9750337fe0"
+  }
 }

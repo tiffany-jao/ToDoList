@@ -1,27 +1,17 @@
-<p>
-  todo-list works!
-</p>
-<section>
+
+<section class="main-section">
   <header>
     <h1>To Do List</h1>
+    <input placeholder="What" #newTodo (keyup.enter)="addToList(newTodo.value); newTodo.value='' "/>
   </header>
-<input placeholder="What" [ngModel]="newToDo" (keyup.enter)="addToList()"/>
-<!--ng for here-->
+</section>
+<section class="list-section">
 <ul>
-  <li *ngFot="let todo of todo-list">
-    <div class="todo-action">
-
-
-      <label>{{todo}}</label>
-    </div>
+  <li *ngFor="let todoItem of toDoItems; let i = index">
+      <input type="checkbox" (click)="removeTodo(i)"/>
+        {{todoItem}}
   </li>
 </ul>
-
-<ul>list 1</ul>
-<ul>list 2</ul>
-
-
-
 </section>
 
 <!--animation bear eating it-->

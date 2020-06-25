@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.sass']
+  styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
 
   constructor() { }
-  toDoItem = [];
+  toDoItems = [];
   newToDo = '';
 
   // add current item to to do item
@@ -17,8 +17,12 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToList() {
-    this.toDoItem.concat(this.newToDo);
+  addToList(newTodo : string) {
+    this.toDoItems.push(newTodo);
+
+  }
+  removeTodo(i: number) {
+    this.toDoItems.splice(i, 1);
   }
 
 }
