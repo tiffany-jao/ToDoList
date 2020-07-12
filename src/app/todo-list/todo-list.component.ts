@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+class TodoItem {
+  task: string;
+  isChecked: boolean;
+}
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -8,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class TodoListComponent implements OnInit {
 
   constructor() { }
-  toDoItems = [];
+  toDoItems = new Array<TodoItem>();
   newToDo = '';
 
   // add current item to to do item
@@ -17,8 +21,20 @@ export class TodoListComponent implements OnInit {
   ngOnInit() {
   }
 
-  addToList(newTodo : string) {
-    this.toDoItems.push(newTodo);
+  addToList(newTodoTask: string) {
+    const todo: TodoItem = {
+      task: newTodoTask,
+      isChecked: false
+    };
+    this.toDoItems.push(todo);
+  }
+  toggleTodo(i:number) {
+    const currentTodo = this.toDoItems[i];
+    let updateItem: TodoItem = {
+      ...currentTodo,
+      isChecked: !currentTodo.isChecked
+    }
+    this.toDoItems[i] = updateItem;
 
   }
   removeTodo(i: number) {

@@ -8,8 +8,12 @@
 <section class="list-section">
 <ul>
   <li *ngFor="let todoItem of toDoItems; let i = index">
-      <input type="checkbox" (click)="removeTodo(i)"/>
-        {{todoItem}}
+    <div [class.checked]="todoItem.isChecked">
+      {{todoItem.isChecked}}
+      <input type="checkbox" (click)="toggleTodo(i)" [checked]="todoItem.isChecked"/>
+        {{todoItem.task}}
+      <input class="remove" type="checkbox" (click)="removeTodo(i)"/>
+    </div>
   </li>
 </ul>
 </section>
