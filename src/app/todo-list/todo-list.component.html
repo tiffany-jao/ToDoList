@@ -2,17 +2,19 @@
 <section class="main-section">
   <header>
     <h1>To Do List</h1>
-    <input placeholder="What" #newTodo (keyup.enter)="addToList(newTodo.value); newTodo.value='' "/>
+    <input placeholder="What"
+    autofocus 
+    #newTodo
+    (keyup.enter)="add(newTodo.value); newTodo.value='' "/>
   </header>
 </section>
 <section class="list-section">
 <ul>
   <li *ngFor="let todoItem of toDoItems; let i = index">
-    <div [class.checked]="todoItem.isChecked">
-      {{todoItem.isChecked}}
-      <input type="checkbox" (click)="toggleTodo(i)" [checked]="todoItem.isChecked"/>
-        {{todoItem.task}}
-      <input class="remove" type="checkbox" (click)="removeTodo(i)"/>
+    <div [class.checked]="todoItem.isComplete">
+      <input type="checkbox" (click)="todoItem.toggleComplete()" [checked]="todoItem.isComplete"/>
+        {{ todoItem.getTask }}
+      <button class="remove" (click)="removeTodo(i)">x</button>
     </div>
   </li>
 </ul>
