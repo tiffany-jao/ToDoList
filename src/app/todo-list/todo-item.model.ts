@@ -19,7 +19,8 @@ export class TodoItem {
         this.complete = !this.complete;
     }
 
-    constructor(task: string) {
+    constructor(task: string, complete?: boolean) {
         this.task = task || '';
+        this.complete = complete || this.complete;
     }
 }

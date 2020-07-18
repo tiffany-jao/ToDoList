@@ -12,7 +12,7 @@
 <ul>
   <li *ngFor="let todoItem of toDoItems; let i = index">
     <div [class.checked]="todoItem.isComplete">
-      <input type="checkbox" (click)="todoItem.toggleComplete()" [checked]="todoItem.isComplete"/>
+      <input type="checkbox" (click)="todoItem.toggleComplete(); update(i, todoItem)" [checked]="todoItem.isComplete"/>
         {{ todoItem.getTask }}
       <button class="remove" (click)="removeTodo(i)">x</button>
     </div>
