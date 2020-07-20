@@ -1,23 +1,29 @@
 
-<section class="main-section">
-  <header>
-    <h1>To Do List</h1>
-    <input placeholder="What"
-    autofocus 
-    #newTodo
-    (keyup.enter)="add(newTodo.value); newTodo.value='' "/>
-  </header>
+<section class="todo-section">
+  <section class="input-section">
+    <header>
+      <h1>To Do List</h1>
+      <input placeholder="What's on your mind?"
+      class="new-todo"
+      autofocus #newTodo
+      (keyup.enter)="add(newTodo.value); newTodo.value='' "/>
+    </header>
+  </section>
+  <section class="list-section">
+    <ul>
+      <li *ngFor="let todoItem of toDoItems; let i = index">
+        <div [class.checked]="todoItem.isComplete">
+          <label class="custom-checkbox">
+            <input type="checkbox"
+            (click)="todoItem.toggleComplete(); update(i, todoItem)"
+            [checked]="todoItem.isComplete"/>
+            <span class="check-mark"></span>
+          </label>
+          <label>{{ todoItem.getTask }}</label>
+          <button class="remove" (click)="removeTodo(i)">x</button>
+        </div>
+      </li>
+    </ul>
+  </section>
 </section>
-<section class="list-section">
-<ul>
-  <li *ngFor="let todoItem of toDoItems; let i = index">
-    <div [class.checked]="todoItem.isComplete">
-      <input type="checkbox" (click)="todoItem.toggleComplete(); update(i, todoItem)" [checked]="todoItem.isComplete"/>
-        {{ todoItem.getTask }}
-      <button class="remove" (click)="removeTodo(i)">x</button>
-    </div>
-  </li>
-</ul>
-</section>
-
 <!--animation bear eating it-->
